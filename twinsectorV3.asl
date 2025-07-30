@@ -3,7 +3,8 @@ state("TwinSector_Steam") // by Seifer and nikvel
 {
     int game : "TwinSector_Steam.exe", 0x0FB96DE0, 0x30; // Level loaded
     int menu : "TwinSector_Steam.exe", 0x0C5AA7F8; // Menu opened
-    int map : "TwinSector_Steam.exe", 0xC1AA818; // Level id
+    int map : "TwinSector_Steam.exe", 0xC1AA818; // Level id\
+    int finish : "TwinSector_Steam.exe", 0x588594; // Last level map
     float xCoord : "TwinSector_Steam.exe", 0x0FB96DE0, 0x48, 0x140;
 }    
 start
@@ -34,6 +35,10 @@ split
     }
 
     if (current.map - old.map == 1 && settings["splitIndividual"])
+    {
+        return true;
+    }
+    if (current.finish == -1 && old.finish == 16) // Last level
     {
         return true;
     }
