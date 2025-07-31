@@ -22,11 +22,13 @@ isLoading
 {
     if (current.game == 0 && old.game == 1)
     {
+        vars.loading = true;
         return true;
     }
 
-    if (current.loading == 0 && old.loading == 128)
+    if (current.xCoord != 0 && old.xCoord == 0 && vars.loading)
     {
+        vars.loading = false;
         return false;
     }
 }
@@ -57,6 +59,7 @@ reset
 }
 onStart
 {
+    vars.loading = false;
     vars.counter = 1;
 }
 startup 
