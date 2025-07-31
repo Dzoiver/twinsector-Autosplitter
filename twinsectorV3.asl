@@ -7,7 +7,7 @@ state("TwinSector_Steam") // by Seifer and nikvel
     int map : "TwinSector_Steam.exe", 0xC1AA818; // Level id\
     int finish : "TwinSector_Steam.exe", 0x588594; // Last level map
     float xCoord : "TwinSector_Steam.exe", 0x0FB96DE0, 0x48, 0x140;
-    float yCoord : "TwinSector_Steam.exe", 0x0FB96DE0, 0x48, 0x1B4;
+    float yCoord : "TwinSector_Steam.exe", 0x0FB96DE0, 0x48, 0x144;
     // float leftHand : "TwinSector_Steam.exe", 0x0FB96DE0, 0x24, 0x134, 0x134;
 }    
 start
