@@ -28,7 +28,7 @@ isLoading
 }
 split
 {
-    if (current.map == vars.counter && settings["splitLevels"])
+    if (current.map == vars.counter && settings["splitLevels"] && old.map != vars.counter)
     {
         vars.counter++;
         return true;
