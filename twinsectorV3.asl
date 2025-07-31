@@ -8,11 +8,11 @@ state("TwinSector_Steam") // by Seifer and nikvel
     int finish : "TwinSector_Steam.exe", 0x588594; // Last level map
     float xCoord : "TwinSector_Steam.exe", 0x0FB96DE0, 0x48, 0x140;
     float yCoord : "TwinSector_Steam.exe", 0x0FB96DE0, 0x48, 0x1B4;
-    float leftHand : "TwinSector_Steam.exe", 0x0FB96DE0, 0x24, 0x134, 0x134;
+    // float leftHand : "TwinSector_Steam.exe", 0x0FB96DE0, 0x24, 0x134, 0x134;
 }    
 start
 {
-	if (current.xCoord != 10 && old.xCoord == 10)
+    if (current.xCoord != 10 && old.xCoord == 10 && current.yCoord != 0 && old.yCoord == 0)
     {
         return true;
     }
