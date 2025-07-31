@@ -26,12 +26,21 @@ isLoading
         return true;
     }
 
-    if (current.xCoord != 0 && old.xCoord == 0 && vars.loading)
+    if (current.loading == 0 && old.loading == 128 && vars.loading)
     {
         vars.loading = false;
         return false;
     }
 }
+
+gameTime
+{
+    if (current.game == 0 && old.game == 1)
+    {
+        return timer.CurrentTime.GameTime.GetValueOrDefault() + TimeSpan.FromMilliseconds(vars.loadingPenalty);
+    }
+}
+
 split
 {
     if (current.map == vars.counter && settings["splitLevels"] && old.map != vars.counter)
@@ -67,5 +76,7 @@ startup
     settings.Add("loadremover", true, "Loadremover");
     settings.Add("splitLevels", true, "Split on levels in a natural order");
     settings.Add("splitIndividual", true, "Split on individual levels");
-    vars.counter = 1; 
+    vars.counter = 1; // Looks for level order
+    vars.loadingPenalty = 200; // Penalty that adds to timer on each load to prevent abusing LRT
+    vars.loading = false;
 }
