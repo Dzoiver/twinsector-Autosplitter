@@ -13,7 +13,12 @@ state("TwinSector_Steam") // by Seifer and nikvel
 }    
 start
 {
-    if (current.cutsceneHour1 == 0 && old.cutsceneHour1 == 1 && current.map == 0)
+    if (current.cutsceneHour1 == 0 && old.cutsceneHour1 == 1 && current.map == 0 && current.game == 1)
+    {
+        return true;
+    }
+
+    if (current.xCoord != 10 && old.xCoord == 10 && current.yCoord != 0 && old.yCoord == 0 && current.map != 0)
     {
         return true;
     }
