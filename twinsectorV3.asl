@@ -8,11 +8,12 @@ state("TwinSector_Steam") // by Seifer and nikvel
     int finish : "TwinSector_Steam.exe", 0x588594; // Last level map
     float xCoord : "TwinSector_Steam.exe", 0x0FB96DE0, 0x48, 0x140;
     float yCoord : "TwinSector_Steam.exe", 0x0FB96DE0, 0x48, 0x144;
+    int cutsceneHour1 : "TwinSector_Steam.exe", 0xFB96D0C;
     // float leftHand : "TwinSector_Steam.exe", 0x0FB96DE0, 0x24, 0x134, 0x134;
 }    
 start
 {
-    if (current.xCoord != 10 && old.xCoord == 10 && current.yCoord != 0 && old.yCoord == 0)
+    if (current.cutsceneHour1 == 0 && old.cutsceneHour1 == 1 && current.map == 0)
     {
         return true;
     }
@@ -51,6 +52,8 @@ split
 
     if (current.map - old.map == 1 && settings["splitIndividual"])
     {
+        if (current.map == 0 && old.map == 1)
+        return false;
         return true;
     }
     if (current.finish == -1 && old.finish == 16) // Last level
@@ -60,7 +63,7 @@ split
 }
 reset
 {
-    if (current.map < old.map)
+    if (current.cutsceneHour1 == 1 && old.cutsceneHour1 == 0 && current.map == 0)
     {
         vars.counter = 1;
         return true;
