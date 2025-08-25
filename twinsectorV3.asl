@@ -68,7 +68,7 @@ split
 }
 reset
 {
-    if (current.cutsceneHour1 == 1 && old.cutsceneHour1 == 0 && current.map == 0)
+    if (current.cutsceneHour1 == 1 && old.cutsceneHour1 == 0 && current.map == 0 && current.game == 1)
     {
         vars.counter = 1;
         return true;
